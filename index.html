@@ -3,20 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>쿠키런: 킹덤 쿠폰 사용</title>
+    <title>쿠키런: 킹덤 쿠폰 매니저</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </head>
 <body>
     <header>
         <h1>쿠키런: 킹덤</h1>
-        <h2>쿠폰 번호 입력</h2>
+        <h2>쿠폰 등록</h2>
     </header>
 
     <main>
-        <coupon-form></coupon-form>
+        <div class="top-grid">
+            <account-manager></account-manager>
+            <coupon-list></coupon-list>
+        </div>
+        <apply-panel></apply-panel>
     </main>
 
     <script src="main.js"></script>

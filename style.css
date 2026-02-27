@@ -2,50 +2,65 @@ body {
     font-family: 'Jua', sans-serif;
     background-color: #f0eada;
     color: #3e2723;
-    text-align: center;
     margin: 0;
     padding: 0;
-    background-image: url('https://i.imgur.com/T3yoA94.png'); /* Subtle background pattern */
-    background-repeat: repeat;
+    background-image: radial-gradient(circle, #d4b896 1px, transparent 1px);
+    background-size: 20px 20px;
 }
 
 header {
     background-color: #ffc107;
-    padding: 2rem;
+    padding: 1.5rem 2rem;
     border-bottom: 5px solid #d9a406;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.2rem;
     color: #fff;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     margin: 0;
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     color: #fff;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
-    margin-top: 0.5rem;
+    margin: 0.3rem 0 0;
 }
 
 main {
-    padding: 2rem;
+    padding: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
-coupon-form {
+.top-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+account-manager,
+coupon-list {
     display: block;
-    background-color: #fff;
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-    margin: 2rem auto;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-coupon-form:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+apply-panel {
+    display: block;
+}
+
+@media (max-width: 680px) {
+    .top-grid {
+        grid-template-columns: 1fr;
+    }
+
+    main {
+        padding: 1rem;
+    }
 }
