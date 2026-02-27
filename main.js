@@ -7,7 +7,7 @@ const TURNSTILE_SITE_KEY = '1x00000000000000000000AA';
 // ── 쿠폰 목록 URL ────────────────────────────────────────────────────────────
 // 관리자가 관리하는 JSON URL. 여기만 수정하면 모든 사용자에게 자동 반영됩니다.
 // 형식: [{ "code": "SPRING2026", "validFrom": "2026-02-01", "validTo": "2026-03-31" }, ...]
-const COUPON_LIST_URL = 'https://gist.githubusercontent.com/keemsir/a4671382e9e80502da3a658f104a8dd4/raw/gistfile1.txt';
+const COUPON_LIST_URL = 'https://gist.githubusercontent.com/keemsir/a4671382e9e80502da3a658f104a8dd4/raw/ckc_code_update.txt';
 
 // ── Storage helpers ─────────────────────────────────────────────────────────
 const Storage = {
