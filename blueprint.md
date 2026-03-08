@@ -4,7 +4,7 @@
 
 A multi-account coupon management tool for Cookie Run: Kingdom. Users can store multiple DevPlay account IDs (MID, email, or GUEST-MID), manage a list of coupons with expiry dates, and apply a selected coupon to selected accounts via the real DevPlay API.
 
-API endpoint: `POST https://coupon.devplay.com/v1/coupon/ck`
+API endpoint: `POST https://us-central1-kingdom-coupon.cloudfunctions.net/couponProxy` (Firebase Functions CORS proxy → `coupon.devplay.com/v1/coupon/ck`)
 Request body: `{ mid, email, game_code: "ck", coupon_code, token }`
 CAPTCHA: Cloudflare Turnstile (site key stored in `TURNSTILE_SITE_KEY` constant in `main.js`)
 
@@ -72,6 +72,13 @@ The multi-account coupon manager is fully implemented with:
 2. `main.js` — `Storage` helpers + three Web Component classes with Shadow DOM
 3. `style.css` — 2-column grid layout, card styles, result table
 
-## **CORS Note**
+## **Architecture: Firebase Proxy**
 
-The DevPlay API at `coupon.devplay.com` may block requests from other origins. The frontend is built to send correct requests; if CORS errors appear in DevTools, a server-side proxy will be needed.
+브라우저에서 `coupon.devplay.com`으로 직접 POST하면 CORS 차단이 발생하므로, Firebase Functions로 서버사이드 프록시를 구성했다.
+
+- `functions/index.js` — `couponProxy` HTTP 함수: `Access-Control-Allow-Origin: *` 헤더 추가 후 요청을 `coupon.devplay.com`으로 전달
+- `firebase.json` — functions(source: `functions/`) + hosting(public: `.`) 설정
+- `.firebaserc` — default project: `kingdom-coupon`
+- `.github/workflows/deploy.yml` — `main` 브랜치 push 시 자동 배포 (requires `FIREBASE_TOKEN` secret)
+
+**주의**: Firebase Functions에서 외부 URL로 outbound 요청하려면 Blaze(종량제) 플랜 필요.

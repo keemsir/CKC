@@ -468,7 +468,7 @@ class ApplyPanel extends HTMLElement {
             let ok = false;
             let msg = '';
             try {
-                const resp = await fetch('https://coupon.devplay.com/v1/coupon/ck', {
+                const resp = await fetch('https://us-central1-kingdom-coupon.cloudfunctions.net/couponProxy', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body),
